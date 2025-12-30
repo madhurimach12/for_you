@@ -104,62 +104,63 @@
             transform: rotate(-45deg);
         }
 
-        /* --- Enhanced Cake Style --- */
+        
         .cake {
             position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(100px) scale(0.5);
-            width: 160px;
-            height: 120px;
-            background: linear-gradient(to bottom, #fff0f6, #f8bbd0);
+            width: 150px;
+            height: 110px;
+            background: linear-gradient(to bottom, #ffe6ee, #f8a5c2);
             border-radius: 0 0 18px 18px;
             z-index: 30;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
-            box-shadow:
-                inset 0 -18px 0 #f48fb1,
-                0 12px 25px rgba(0,0,0,0.2);
+            overflow: hidden; /* 🔑 IMPORTANT */
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
         
-        /* Cake layers */
+        /* cake horizontal layers */
         .cake::before,
         .cake::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 8px;
-            background: #ff80ab;
             left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.6);
         }
         
-        .cake::before { top: 40px; }
+        .cake::before { top: 42px; }
         .cake::after { top: 75px; }
         
-        /* Icing top */
+        /* icing top */
         .cake-icing {
             position: absolute;
-            top: -12px;
+            top: 0;
             width: 100%;
-            height: 35px;
-            background: linear-gradient(to bottom, #ff9acb, #ff6fa5);
-            border-radius: 20px 20px 10px 10px;
-            box-shadow: inset 0 -5px 0 rgba(255,255,255,0.4);
+            height: 26px;
+            background: linear-gradient(to bottom, #ff7aa2, #ff5f8f);
+            border-radius: 18px 18px 10px 10px;
+            z-index: 2;
         }
         
-        /* Dripping icing */
+        /* dripping icing */
         .cake-icing::before {
             content: '';
             position: absolute;
-            bottom: -14px;
+            bottom: -10px;
+            left: 0;
             width: 100%;
-            height: 20px;
+            height: 16px;
             background:
-                radial-gradient(circle at 10% 0, #ff6fa5 40%, transparent 41%),
-                radial-gradient(circle at 30% 0, #ff6fa5 45%, transparent 46%),
-                radial-gradient(circle at 55% 0, #ff6fa5 42%, transparent 43%),
-                radial-gradient(circle at 80% 0, #ff6fa5 48%, transparent 49%);
+                radial-gradient(circle at 10% 0, #ff5f8f 40%, transparent 41%),
+                radial-gradient(circle at 35% 0, #ff5f8f 45%, transparent 46%),
+                radial-gradient(circle at 60% 0, #ff5f8f 42%, transparent 43%),
+                radial-gradient(circle at 85% 0, #ff5f8f 48%, transparent 49%);
         }
+            
         
         /* Candles */
         .candle {
