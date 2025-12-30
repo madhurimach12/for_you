@@ -104,76 +104,87 @@
             transform: rotate(-45deg);
         }
 
-        /* --- The Cake --- */
+        /* --- Enhanced Cake Style --- */
         .cake {
             position: absolute;
             bottom: 20px;
             left: 50%;
-            transform: translateX(-50%) translateY(100px) scale(0.5); 
-            width: 150px;
+            transform: translateX(-50%) translateY(100px) scale(0.5);
+            width: 160px;
             height: 120px;
-            background: #fce4ec;
-            border-radius: 10px;
-            z-index: 30; 
+            background: linear-gradient(to bottom, #fff0f6, #f8bbd0);
+            border-radius: 0 0 18px 18px;
+            z-index: 30;
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
-            box-shadow: inset 0 -15px 0 #f8bbd0, 0 5px 10px rgba(0,0,0,0.1);
-        }
-
-        .cake-layer-middle {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            height: 10px;
-            background: #ff80ab;
-        }
-
-        .cake-icing {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 30px;
-            background: #ff80ab;
-            border-radius: 10px 10px 0 0;
+            box-shadow:
+                inset 0 -18px 0 #f48fb1,
+                0 12px 25px rgba(0,0,0,0.2);
         }
         
+        /* Cake layers */
+        .cake::before,
+        .cake::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            background: #ff80ab;
+            left: 0;
+        }
+        
+        .cake::before { top: 40px; }
+        .cake::after { top: 75px; }
+        
+        /* Icing top */
+        .cake-icing {
+            position: absolute;
+            top: -12px;
+            width: 100%;
+            height: 35px;
+            background: linear-gradient(to bottom, #ff9acb, #ff6fa5);
+            border-radius: 20px 20px 10px 10px;
+            box-shadow: inset 0 -5px 0 rgba(255,255,255,0.4);
+        }
+        
+        /* Dripping icing */
         .cake-icing::before {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -14px;
             width: 100%;
             height: 20px;
-            background: radial-gradient(circle, #ff80ab 50%, transparent 50%);
-            background-size: 20px 20px;
+            background:
+                radial-gradient(circle at 10% 0, #ff6fa5 40%, transparent 41%),
+                radial-gradient(circle at 30% 0, #ff6fa5 45%, transparent 46%),
+                radial-gradient(circle at 55% 0, #ff6fa5 42%, transparent 43%),
+                radial-gradient(circle at 80% 0, #ff6fa5 48%, transparent 49%);
         }
-
+        
         /* Candles */
         .candle {
             position: absolute;
-            top: -25px;
+            top: -35px;
             width: 10px;
-            height: 30px;
-            border-radius: 2px;
+            height: 35px;
+            border-radius: 4px;
+            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15);
         }
-
-        .c-1 { background: linear-gradient(to bottom, #fff, #ff6b81); left: calc(10% - 5px); }
-        .c-2 { background: linear-gradient(to bottom, #fff, #ffd700); left: calc(30% - 5px); }
-        .c-3 { background: linear-gradient(to bottom, #fff, #2196f3); left: calc(50% - 5px); }
-        .c-4 { background: linear-gradient(to bottom, #fff, #4caf50); left: calc(70% - 5px); }
-        .c-5 { background: linear-gradient(to bottom, #fff, #9c27b0); left: calc(90% - 5px); }
-
+        
+        /* Flame */
         .flame {
             position: absolute;
-            top: -12px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            width: 10px;
-            height: 15px;
-            background: #ff9800;
+            width: 12px;
+            height: 18px;
+            background: radial-gradient(circle, #fff176 30%, #ff9800 70%);
             border-radius: 50% 50% 20% 20%;
             animation: flicker 0.5s infinite alternate;
-            box-shadow: 0 0 10px #ffeb3b;
+            box-shadow: 0 0 15px #ffeb3b;
         }
+
 
         .banner {
             position: absolute;
