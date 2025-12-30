@@ -103,8 +103,7 @@
             border-radius: 50% 50% 50% 0;
             transform: rotate(-45deg);
         }
-
-        
+        /* --- Simple Cute Cake --- */
         .cake {
             position: absolute;
             bottom: 20px;
@@ -112,54 +111,45 @@
             transform: translateX(-50%) translateY(100px) scale(0.5);
             width: 150px;
             height: 110px;
-            background: linear-gradient(to bottom, #ffe6ee, #f8a5c2);
-            border-radius: 0 0 18px 18px;
+            background: linear-gradient(
+                to right,
+                #f8a5c2 0%,
+                #ffd1e3 50%,
+                #f8a5c2 100%
+            );
+            border-radius: 0 0 20px 20px;
             z-index: 30;
             opacity: 0;
-            overflow: hidden; /* 🔑 IMPORTANT */
+            overflow: hidden;
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
         }
         
-        /* cake horizontal layers */
-        .cake::before,
-        .cake::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.6);
-        }
-        
-        .cake::before { top: 42px; }
-        .cake::after { top: 75px; }
-        
-        /* icing top */
+        /* top icing */
         .cake-icing {
             position: absolute;
             top: 0;
             width: 100%;
-            height: 26px;
+            height: 28px;
             background: linear-gradient(to bottom, #ff7aa2, #ff5f8f);
-            border-radius: 18px 18px 10px 10px;
-            z-index: 2;
+            border-radius: 20px 20px 12px 12px;
+            box-shadow: inset 0 -4px 0 rgba(255,255,255,0.4);
         }
         
-        /* dripping icing */
+        /* icing drip */
         .cake-icing::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 0;
+            bottom: -12px;
             width: 100%;
             height: 16px;
             background:
-                radial-gradient(circle at 10% 0, #ff5f8f 40%, transparent 41%),
-                radial-gradient(circle at 35% 0, #ff5f8f 45%, transparent 46%),
-                radial-gradient(circle at 60% 0, #ff5f8f 42%, transparent 43%),
-                radial-gradient(circle at 85% 0, #ff5f8f 48%, transparent 49%);
+                radial-gradient(circle at 15% 0, #ff5f8f 45%, transparent 46%),
+                radial-gradient(circle at 40% 0, #ff5f8f 50%, transparent 51%),
+                radial-gradient(circle at 65% 0, #ff5f8f 48%, transparent 49%),
+                radial-gradient(circle at 90% 0, #ff5f8f 52%, transparent 53%);
         }
+
             
         
         /* Candles */
