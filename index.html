@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -400,7 +399,7 @@
             { note: 'C5', duration: '4n', time: "4:2:0" }, 
             { note: 'D5', duration: '4n', time: "4:3:0" }, 
             
-            { note: 'C5', duration: '2n', time: "5:0:0" } 
+            { note: 'C5', duration: '2n', time: "5:0:0" } 
         ];
 
         const melodyPart = new Tone.Part((time, value) => {
@@ -477,6 +476,7 @@
                 p.update();
                 p.draw();
             });
+            // Store the ID of the animation frame
             animationId = requestAnimationFrame(animateConfetti);
         }
 
@@ -492,6 +492,27 @@
                     playMusic();
                     startConfetti();
                 }, 400); 
+            }
+        });
+
+        // --- Handle Browser Focus/Blur to Pause/Resume Music and Confetti ---
+        window.addEventListener('blur', () => {
+            if (isOpen) {
+                // Pause the music transport to stop playback
+                Tone.Transport.pause();
+                
+                // Stop the confetti animation loop
+                cancelAnimationFrame(animationId);
+            }
+        });
+
+        window.addEventListener('focus', () => {
+            if (isOpen) {
+                // Resume the music transport from where it left off
+                Tone.Transport.start();
+
+                // Restart the confetti animation loop
+                animateConfetti();
             }
         });
 
