@@ -410,10 +410,7 @@
         melodyPart.loopEnd = '5:2'; // Loop duration
 
         function playMusic() {
-            // Must resume audio context on user interaction (required by browsers)
-            if (Tone.context.state !== 'running') {
-                Tone.context.resume();
-            }
+            // Tone.start() is now called directly in the click handler for mobile compatibility
             
             Tone.Transport.bpm.value = 120;
             melodyPart.start(0);
@@ -481,8 +478,11 @@
         }
 
         // Event listener for opening the gift box (works for both click and tap)
-        giftBox.addEventListener('click', () => {
+        giftBox.addEventListener('click', async () => {
             if (!isOpen) {
+                // CRITICAL FIX FOR MOBILE: Start the AudioContext immediately on user interaction
+                await Tone.start(); 
+                
                 // Apply the 'open' class to trigger CSS transitions
                 giftBox.classList.add('open');
                 isOpen = true;
