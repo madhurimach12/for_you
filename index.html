@@ -105,35 +105,103 @@
         }
 
         .cake {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px) scale(0.5); 
-            width: 150px;
-            height: 120px;
-            background: #fce4ec;
-            border-radius: 10px;
-            z-index: 30; 
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            box-shadow: inset 0 -15px 0 #f8bbd0, 0 5px 10px rgba(0,0,0,0.1);
+        position: absolute;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%) translateY(120px) scale(0.4); 
+        width: 160px;
+        height: 160px;
+        z-index: 30; 
+        transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
         }
-
-        .cake-icing {
+    
+        /* Bottom Tier */
+        .cake-tier-bottom {
+            width: 160px;
+            height: 70px;
+            background: linear-gradient(to bottom, #fff0f6, #f8bbd0);
+            border-radius: 12px 12px 4px 4px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    
+        /* Top Tier */
+        .cake-tier-top {
+            width: 110px;
+            height: 60px;
+            background: linear-gradient(to bottom, #fff0f6, #f48fb1);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            margin-bottom: -5px; /* Blend into bottom tier */
+            z-index: 2;
+        }
+    
+        /* Fancy Drip Icing */
+        .icing-drip {
             position: absolute;
             top: 0;
             width: 100%;
-            height: 30px;
+            height: 25px;
             background: #ff80ab;
             border-radius: 10px 10px 0 0;
         }
-
-        .candle { position: absolute; top: -25px; width: 10px; height: 30px; border-radius: 2px; }
-        .c-1 { background: linear-gradient(to bottom, #fff, #ff6b81); left: 10%; }
-        .c-2 { background: linear-gradient(to bottom, #fff, #ffd700); left: 30%; }
-        .c-3 { background: linear-gradient(to bottom, #fff, #2196f3); left: 50%; }
-        .c-4 { background: linear-gradient(to bottom, #fff, #4caf50); left: 70%; }
-        .c-5 { background: linear-gradient(to bottom, #fff, #9c27b0); left: 90%; }
+    
+        .icing-drip::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            width: 100%;
+            height: 18px;
+            background: radial-gradient(circle, #ff80ab 65%, transparent 70%);
+            background-size: 22px 20px;
+        }
+    
+        /* Decorative Pearl Sprinkles */
+        .sprinkles {
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 10px;
+        }
+    
+        .pearl {
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255,255,255,0.8);
+            opacity: 0.9;
+        }
+    
+        /* Elegant Spiral Candles */
+        .candle {
+            position: absolute;
+            width: 8px;
+            height: 40px;
+            border-radius: 4px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ffffff,
+                #ffffff 4px,
+                #ff4081 4px,
+                #ff4081 8px
+            );
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        }
+    
+        /* Positioning candles on the top tier */
+        .c-1 { left: 15%; top: -30px; }
+        .c-2 { left: 35%; top: -45px; }
+        .c-3 { left: 50%; top: -55px; transform: translateX(-50%); }
+        .c-4 { left: 65%; top: -45px; }
+        .c-5 { left: 85%; top: -30px; }
 
         .flame {
             position: absolute;
