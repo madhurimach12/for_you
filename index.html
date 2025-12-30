@@ -506,8 +506,13 @@
             }
         });
 
-        window.addEventListener('focus', () => {
+        window.addEventListener('focus', async () => {
             if (isOpen) {
+                // FIX: Explicitly resume the AudioContext if it was suspended by the browser when blurred
+                if (Tone.context.state !== 'running') {
+                    await Tone.start(); 
+                }
+                
                 // Resume the music transport from where it left off
                 Tone.Transport.start();
 
