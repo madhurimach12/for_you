@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Essential for mobile responsiveness: ensures content scales correctly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday My Love!</title>
-    <!-- Tailwind CSS for basic utilities -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Tone.js for music generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
 
         body {
-            /* Full viewport height and centered content for all devices */
             background: radial-gradient(circle, #fbc2eb 0%, #a6c1ee 100%);
             min-height: 100vh;
             display: flex;
@@ -24,9 +20,7 @@
             perspective: 1000px;
         }
 
-        /* --- The Gift Box Container --- */
         .gift-container {
-            /* Fixed size provides a consistent, tappable target */
             position: relative;
             width: 200px;
             height: 200px;
@@ -35,11 +29,8 @@
             transition: transform 0.5s ease;
         }
 
-        .gift-container:hover {
-            transform: scale(1.05);
-        }
+        .gift-container:hover { transform: scale(1.05); }
 
-        /* --- The Box Body --- */
         .box-body {
             position: absolute;
             bottom: 0;
@@ -49,12 +40,9 @@
             border-radius: 0 0 10px 10px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             z-index: 10;
-            display: flex;
-            justify-content: center;
             transition: opacity 0.3s ease-out;
         }
 
-        /* Vertical Ribbon on Body */
         .box-body::before {
             content: '';
             position: absolute;
@@ -63,10 +51,8 @@
             background: #ffd700;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
 
-        /* --- The Box Lid --- */
         .box-lid {
             position: absolute;
             top: 50px;
@@ -81,7 +67,6 @@
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out 0.3s;
         }
 
-        /* Vertical Ribbon on Lid */
         .box-lid::before {
             content: '';
             position: absolute;
@@ -92,19 +77,6 @@
             transform: translateX(-50%);
         }
 
-        /* Horizontal Ribbon on Lid */
-        .box-lid::after {
-            content: '';
-            position: absolute;
-            height: 30px;
-            width: 100%;
-            background: #ffd700;
-            top: 50%;
-            transform: translateY(-50%);
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-
-        /* The Bow on top */
         .box-bow {
             position: absolute;
             top: -20px;
@@ -124,7 +96,6 @@
             border: 5px solid #ffd700;
             border-radius: 50% 50% 0 50%;
             transform: rotate(45deg);
-            background: transparent;
         }
 
         .box-bow::after {
@@ -133,7 +104,6 @@
             transform: rotate(-45deg);
         }
 
-        /* --- The Cake --- */
         .cake {
             position: absolute;
             bottom: 20px;
@@ -149,14 +119,6 @@
             box-shadow: inset 0 -15px 0 #f8bbd0, 0 5px 10px rgba(0,0,0,0.1);
         }
 
-        .cake-layer-middle {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            height: 10px;
-            background: #ff80ab;
-        }
-
         .cake-icing {
             position: absolute;
             top: 0;
@@ -165,31 +127,13 @@
             background: #ff80ab;
             border-radius: 10px 10px 0 0;
         }
-        
-        .cake-icing::before {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            width: 100%;
-            height: 20px;
-            background: radial-gradient(circle, #ff80ab 50%, transparent 50%);
-            background-size: 20px 20px;
-        }
 
-        /* Candles */
-        .candle {
-            position: absolute;
-            top: -25px;
-            width: 10px;
-            height: 30px;
-            border-radius: 2px;
-        }
-
-        .c-1 { background: linear-gradient(to bottom, #fff, #ff6b81); left: calc(10% - 5px); }
-        .c-2 { background: linear-gradient(to bottom, #fff, #ffd700); left: calc(30% - 5px); }
-        .c-3 { background: linear-gradient(to bottom, #fff, #2196f3); left: calc(50% - 5px); }
-        .c-4 { background: linear-gradient(to bottom, #fff, #4caf50); left: calc(70% - 5px); }
-        .c-5 { background: linear-gradient(to bottom, #fff, #9c27b0); left: calc(90% - 5px); }
+        .candle { position: absolute; top: -25px; width: 10px; height: 30px; border-radius: 2px; }
+        .c-1 { background: linear-gradient(to bottom, #fff, #ff6b81); left: 10%; }
+        .c-2 { background: linear-gradient(to bottom, #fff, #ffd700); left: 30%; }
+        .c-3 { background: linear-gradient(to bottom, #fff, #2196f3); left: 50%; }
+        .c-4 { background: linear-gradient(to bottom, #fff, #4caf50); left: 70%; }
+        .c-5 { background: linear-gradient(to bottom, #fff, #9c27b0); left: 90%; }
 
         .flame {
             position: absolute;
@@ -204,7 +148,6 @@
             box-shadow: 0 0 10px #ffeb3b;
         }
 
-        /* --- The Banner --- */
         .banner {
             position: absolute;
             top: -120px;
@@ -224,19 +167,7 @@
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             transition-delay: 0.5s;
         }
-        
-        .banner::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 10px 10px 0;
-            border-style: solid;
-            border-color: #ffd700 transparent transparent transparent;
-        }
 
-        /* --- Click Instruction Text --- */
         .instruction {
             position: absolute;
             bottom: -60px;
@@ -247,37 +178,28 @@
             animation: bounce 2s infinite;
         }
 
-        /* --- Animation States (Gift Box Opening) --- */
-        .gift-container.open .box-lid {
-            transform: rotateX(-110deg) translateY(-20px);
-            opacity: 0;
-        }
-        
-        .gift-container.open .box-bow {
-             transform: rotateX(-110deg) translateY(-20px) translateZ(-10px);
-             opacity: 0;
-        }
-        
-        .gift-container.open .box-body {
-             opacity: 0;
+        .gift-container.open .box-lid { transform: rotateX(-110deg) translateY(-20px); opacity: 0; }
+        .gift-container.open .box-body { opacity: 0; }
+        .gift-container.open .cake { transform: translateX(-50%) translateY(-20px) scale(1); opacity: 1; }
+        .gift-container.open .banner { transform: translateX(-50%) scale(1); opacity: 1; top: -150px; }
+        .gift-container.open .instruction { opacity: 0; }
+
+        /* --- NEW: Glowing Heart Style --- */
+        .heart {
+            position: fixed;
+            font-size: 2rem;
+            color: #ff4d6d;
+            text-shadow: 0 0 15px rgba(255, 77, 109, 0.8);
+            pointer-events: none;
+            z-index: 200;
+            animation: floatUp 2s ease-out forwards;
         }
 
-        .gift-container.open .cake {
-            transform: translateX(-50%) translateY(-20px) scale(1);
-            opacity: 1;
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
         }
 
-        .gift-container.open .banner {
-            transform: translateX(-50%) scale(1);
-            opacity: 1;
-            top: -150px;
-        }
-
-        .gift-container.open .instruction {
-            opacity: 0;
-        }
-
-        /* --- Keyframes --- */
         @keyframes flicker {
             0% { transform: translateX(-50%) scale(1); opacity: 1; }
             100% { transform: translateX(-50%) scale(0.9); opacity: 0.8; }
@@ -289,7 +211,6 @@
             60% {transform: translateY(-5px);}
         }
 
-        /* Confetti Canvas - full screen, non-interactive overlay */
         #confetti {
             position: absolute;
             top: 0;
@@ -299,7 +220,6 @@
             pointer-events: none;
             z-index: 100;
         }
-
     </style>
 </head>
 <body>
@@ -307,47 +227,23 @@
     <canvas id="confetti"></canvas>
 
     <div class="gift-container" id="giftBox">
-        <!-- Banner Message -->
-        <div class="banner">
-            Happy Birthday My Love! ❤️
-        </div>
-
-        <!-- The Cake -->
-        <div class="cake">
+        <div class="banner">Happy Birthday My Love! ❤️</div>
+        <div class="cake" id="cake">
             <div class="cake-icing"></div>
-            <div class="cake-layer-middle"></div>
-            
-            <!-- Candles -->
-            <div class="candle c-1">
-                <div class="flame"></div>
-            </div>
-            <div class="candle c-2">
-                <div class="flame"></div>
-            </div>
-            <div class="candle c-3">
-                <div class="flame"></div>
-            </div>
-            <div class="candle c-4">
-                <div class="flame"></div>
-            </div>
-            <div class="candle c-5">
-                <div class="flame"></div>
-            </div>
-            
+            <div class="candle c-1"><div class="flame"></div></div>
+            <div class="candle c-2"><div class="flame"></div></div>
+            <div class="candle c-3"><div class="flame"></div></div>
+            <div class="candle c-4"><div class="flame"></div></div>
+            <div class="candle c-5"><div class="flame"></div></div>
         </div>
-
-        <!-- The Gift Box -->
-        <div class="box-lid">
-            <div class="box-bow"></div>
-        </div>
+        <div class="box-lid"><div class="box-bow"></div></div>
         <div class="box-body"></div>
-        
-        <!-- Instruction for interaction -->
         <div class="instruction">Tap to open!</div>
     </div>
 
     <script>
         const giftBox = document.getElementById('giftBox');
+        const cake = document.getElementById('cake');
         const canvas = document.getElementById('confetti');
         const ctx = canvas.getContext('2d');
         let confetti = [];
@@ -355,51 +251,38 @@
         let isOpen = false;
 
         // --- Tone.js Music Setup ---
-        
-        // Synth configuration for a soft tone
         const melodySynth = new Tone.Synth({
             oscillator: { type: "sine" }, 
-            envelope: {
-                attack: 0.05,
-                decay: 0.2,
-                sustain: 0.5,
-                release: 1
-            },
-            volume: -8
+            envelope: { attack: 0.1, decay: 0.2, sustain: 0.6, release: 2 },
+            volume: -10
         }).toDestination();
 
-        // The "Happy Birthday" melody notes and timings
         const happyBirthdayMelody = [
             { note: 'G4', duration: '8n', time: "0:0:0" },  
             { note: 'G4', duration: '8n', time: "0:0:2" }, 
             { note: 'A4', duration: '4n', time: "0:1:0" }, 
             { note: 'G4', duration: '4n', time: "0:2:0" }, 
             { note: 'C5', duration: '4n', time: "0:3:0" }, 
-            
             { note: 'B4', duration: '4n', time: "1:0:0" },  
             { note: 'G4', duration: '8n', time: "1:1:0" },  
             { note: 'G4', duration: '8n', time: "1:1:2" },  
             { note: 'A4', duration: '4n', time: "1:2:0" }, 
             { note: 'G4', duration: '4n', time: "1:3:0" },  
-            
             { note: 'D5', duration: '4n', time: "2:0:0" }, 
             { note: 'C5', duration: '4n', time: "2:1:0" }, 
             { note: 'G4', duration: '8n', time: "2:2:0" },  
             { note: 'G4', duration: '8n', time: "2:2:2" }, 
             { note: 'G5', duration: '4n', time: "2:3:0" },  
-            
             { note: 'E5', duration: '4n', time: "3:0:0" }, 
             { note: 'C5', duration: '4n', time: "3:1:0" }, 
             { note: 'B4', duration: '4n', time: "3:2:0" }, 
             { note: 'A4', duration: '4n', time: "3:3:0" }, 
-            
             { note: 'F5', duration: '8n', time: "4:0:0" }, 
             { note: 'F5', duration: '8n', time: "4:0:2" }, 
             { note: 'E5', duration: '4n', time: "4:1:0" }, 
             { note: 'C5', duration: '4n', time: "4:2:0" }, 
             { note: 'D5', duration: '4n', time: "4:3:0" }, 
-            
-            { note: 'C5', duration: '2n', time: "5:0:0" } 
+            { note: 'C5', duration: '2n', time: "5:0:0" } 
         ];
 
         const melodyPart = new Tone.Part((time, value) => {
@@ -407,19 +290,30 @@
         }, happyBirthdayMelody);
 
         melodyPart.loop = true;
-        melodyPart.loopEnd = '5:2'; // Loop duration
+        melodyPart.loopEnd = '5:2';
 
         function playMusic() {
-            // Tone.start() is now called directly in the click handler for mobile compatibility
-            
-            Tone.Transport.bpm.value = 75;
+            Tone.Transport.bpm.value = 85; 
             melodyPart.start(0);
             Tone.Transport.start();
         }
 
-        // --- Confetti and UI Logic ---
+        // --- NEW: Heart Function ---
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            // Random position across screen
+            heart.style.left = Math.random() * 90 + 'vw';
+            heart.style.top = Math.random() * 80 + 'vh';
+            
+            document.body.appendChild(heart);
+            
+            // Cleanup heart after animation
+            setTimeout(() => { heart.remove(); }, 2000);
+        }
 
-        // Resizes canvas to fill the screen
+        // --- Confetti Logic ---
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -427,29 +321,23 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Confetti Particle Class
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = -10;
-                this.size = Math.random() * 10 + 5;
-                this.speedY = Math.random() * 3 + 2;
-                this.speedX = Math.random() * 2 - 1;
-                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                this.size = Math.random() * 8 + 4;
+                this.speedY = Math.random() * 1.5 + 1; 
+                this.speedX = Math.random() * 1.5 - 0.75;
+                this.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
                 this.rotation = Math.random() * 360;
-                this.rotationSpeed = Math.random() * 5 - 2.5;
+                this.rotationSpeed = Math.random() * 3 - 1.5;
             }
-
             update() {
                 this.y += this.speedY;
                 this.x += this.speedX;
                 this.rotation += this.rotationSpeed;
-                if (this.y > canvas.height) {
-                    this.y = -10;
-                    this.x = Math.random() * canvas.width;
-                }
+                if (this.y > canvas.height) { this.y = -10; this.x = Math.random() * canvas.width; }
             }
-
             draw() {
                 ctx.save();
                 ctx.translate(this.x, this.y);
@@ -461,66 +349,49 @@
         }
 
         function startConfetti() {
-            for (let i = 0; i < 100; i++) {
-                confetti.push(new Particle());
-            }
+            for (let i = 0; i < 80; i++) confetti.push(new Particle());
             animateConfetti();
         }
 
         function animateConfetti() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            confetti.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            // Store the ID of the animation frame
+            confetti.forEach(p => { p.update(); p.draw(); });
             animationId = requestAnimationFrame(animateConfetti);
         }
 
-        // Event listener for opening the gift box (works for both click and tap)
-        giftBox.addEventListener('click', async () => {
+        // Main opening click
+        giftBox.addEventListener('click', async (e) => {
             if (!isOpen) {
-                // CRITICAL FIX FOR MOBILE: Start the AudioContext immediately on user interaction
                 await Tone.start(); 
-                
-                // Apply the 'open' class to trigger CSS transitions
                 giftBox.classList.add('open');
                 isOpen = true;
-                
-                // Start music and confetti after the initial box opening animation (400ms delay)
-                setTimeout(() => {
-                    playMusic();
-                    startConfetti();
-                }, 400); 
+                setTimeout(() => { playMusic(); startConfetti(); }, 400); 
             }
         });
 
-        // --- Handle Browser Focus/Blur to Pause/Resume Music and Confetti ---
-        window.addEventListener('blur', () => {
+        // NEW: Specific cake click for hearts
+        cake.addEventListener('click', (e) => {
             if (isOpen) {
-                // Pause the music transport to stop playback
-                Tone.Transport.pause();
-                
-                // Stop the confetti animation loop
-                cancelAnimationFrame(animationId);
+                // Prevent the giftBox event from firing again if bubble up
+                e.stopPropagation();
+                // Create multiple hearts for a "burst" effect
+                for(let i=0; i<5; i++) {
+                    setTimeout(createHeart, i * 100);
+                }
             }
+        });
+
+        window.addEventListener('blur', () => {
+            if (isOpen) { Tone.Transport.pause(); cancelAnimationFrame(animationId); }
         });
 
         window.addEventListener('focus', async () => {
             if (isOpen) {
-                // FIX: Explicitly resume the AudioContext if it was suspended by the browser when blurred
-                if (Tone.context.state !== 'running') {
-                    await Tone.start(); 
-                }
-                
-                // Resume the music transport from where it left off
+                if (Tone.context.state !== 'running') await Tone.start(); 
                 Tone.Transport.start();
-
-                // Restart the confetti animation loop
                 animateConfetti();
             }
         });
-
     </script>
 </body>
 </html>
